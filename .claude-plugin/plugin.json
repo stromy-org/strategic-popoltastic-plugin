@@ -1,0 +1,11 @@
+{
+  "name": "strategic-popoltastic",
+  "version": "0.1.0",
+  "description": "Test plugin for Strategic Popoltastic — verifies all deliverable skills in Cowork app",
+  "author": {
+    "name": "stromy-org"
+  },
+  "repository": "https://github.com/stromy-org/strategic-popoltastic-plugin",
+  "license": "UNLICENSED",
+  "keywords": ["deliverables", "branding", "documents"]
+}
