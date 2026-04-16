@@ -216,9 +216,6 @@
     }
   },
   "templates": {
-    "pptx": {
-      "default": "templates/pptx/default.pptx"
-    },
     "docx": {
       "default": "templates/docx/default.docx",
       "letterhead": "templates/docx/letterhead.docx"
