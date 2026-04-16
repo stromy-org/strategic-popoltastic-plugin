@@ -8,13 +8,13 @@ This reference documents the complete schema for company data stored in `compani
 companies/<company-name>/
 ├── profile.json          # Company identity, services, pricing, credentials, legal
 ├── people.json           # People registry — contact details, roles (author/spokesperson/approver)
-├── brand/
-│   ├── charter.json      # Visual identity
+├── charter.json          # Visual identity
+├── logos/                # Logo variants
 │   ├── logo.png          # Primary logo
-│   ├── logo_white.png    # White/reversed logo (optional)
-│   └── templates/        # Format-specific templates (optional)
-│       ├── pptx/
-│       └── docx/
+│   └── logo_white.png    # White/reversed logo (optional)
+├── templates/            # Format-specific templates (optional)
+│   ├── pptx/
+│   └── docx/
 └── proposals/
     ├── case-studies.json
     ├── team-bios.json
@@ -106,7 +106,7 @@ Array of services the company offers.
 
 ---
 
-## brand/charter.json
+## charter.json
 
 Unified visual identity covering all output formats.
 
@@ -143,7 +143,7 @@ Unified visual identity covering all output formats.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `primary` | string | Primary logo filename (relative to `brand/`) |
+| `primary` | string | Primary logo filename (relative to the company directory) |
 | `white` | string | White/reversed logo filename |
 | `icon` | string | Icon/favicon (optional) |
 | `maxWidth` | string | Maximum logo width (e.g., "120pt") |
@@ -409,8 +409,8 @@ When assembling a proposal:
 
 1. Copy the example: `cp -r companies/_example companies/<name>`
 2. Edit `profile.json` — fill in all company identity, services, and pricing
-3. Edit `brand/charter.json` — set your colors, fonts, and logo references
-4. Add logo files to `brand/`
+3. Edit `charter.json` — set your colors, fonts, and logo references
+4. Add logo files to `logos/`
 5. Replace example content in `proposals/`:
    - Add real case studies to `case-studies.json`
    - Add team members to `team-bios.json`

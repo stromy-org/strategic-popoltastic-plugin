@@ -23,7 +23,7 @@ The skill is format-agnostic: it produces messaging architecture as structured c
 
 ```
 companies/<name>/profile.json           → Company identity, services, value proposition
-companies/<name>/brand/charter.json      → Colors, fonts, logo (for branded output)
+companies/<name>/charter.json      → Colors, fonts, logo (for branded output)
 companies/<name>/messaging/              → Messaging content library:
   ├── pillars.json         → Reusable messaging pillars with proof attachments
   ├── proof-points.json    → Evidence library organized by type and topic
@@ -291,8 +291,8 @@ This skill owns messaging architecture — framework structure, pillar developme
 **Default**: If the user doesn't specify a format, produce markdown first and ask whether they'd like a formatted deliverable. Recommend PPTX for Message House and Strategic Narrative (visual structures that present well as slides), DOCX for Messaging Hierarchy and Messaging Matrix (reference documents teams pull language from).
 
 **Brand context to carry forward** when producing formatted output:
-- Brand charter location: `companies/<name>/brand/charter.json`
-- Apply heading color from `colors.primary`, body font from `fonts.body`, logo from `brand/logos/` (path in charter `logo` section)
+- Brand charter location: `companies/<name>/charter.json`
+- Apply heading color from `colors.primary`, body font from `fonts.body`, logo from `logos/` (path in charter `logo` section)
 - Use `document` section from charter for DOCX margins/headers, `presentation` section for PPTX layout
 
 ## Output Location

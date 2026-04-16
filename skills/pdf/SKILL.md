@@ -17,13 +17,13 @@ This guide covers essential PDF processing operations using Python libraries and
 When creating a PDF for a **specific company or brand** (via reportlab), check for a brand charter before choosing colors and fonts manually. This is optional — when no brand is specified, produce an unbranded PDF with default styling. This section only applies to **PDF creation** (reportlab), not to reading, merging, splitting, or form-filling operations.
 
 ### Discovering brand data
-**Default**: Use `companies/strategicpopoltastic/brand/charter.json` (the Strategic Popoltastic brand). Override only if the user explicitly names a different brand.
+**Default**: Use `companies/strategicpopoltastic/charter.json` (the Strategic Popoltastic brand). Override only if the user explicitly names a different brand.
 
-Look for a charter file at `companies/<name>/brand/charter.json`. If a charter exists, it provides:
+Look for a charter file at `companies/<name>/charter.json`. If a charter exists, it provides:
 
 - **Colors**: `primary`, `secondary`, `accent`, `background`, `backgroundAlt`, `text`, `textLight`, plus semantic colors (`success`, `warning`, `error`)
 - **Fonts**: `heading` (family + weight + fallback), `body` (family + weight + fallback), `mono` (family + fallback)
-- **Logo**: filename(s) in the same `brand/` directory (e.g. `logo.png`, `logo_white.png`) with max dimensions and `"sizing": "contain"` — the logo must fit within the `maxWidth`/`maxHeight` bounding box while preserving its natural aspect ratio (never stretch or squash)
+- **Logo**: filename(s) in the same company directory (e.g. `logo.png`, `logo_white.png`) with max dimensions and `"sizing": "contain"` — the logo must fit within the `maxWidth`/`maxHeight` bounding box while preserving its natural aspect ratio (never stretch or squash)
 - **Document settings**: `document.margins` (top/bottom/left/right), `document.header`, `document.footer`, `document.headingColor`, `document.tableHeaderColor`
 - **Formatting rules**: `formatting.headingThreshold`, `formatting.accentCycleColors`, `formatting.autoContrastText`
 
@@ -150,7 +150,7 @@ If the charter has a `formatting` section, apply these rules:
 - **`autoContrastText`**: When `true`, auto-select white or dark text on colored backgrounds (cover pages, table headers, callout boxes).
 
 ### When using a non-Strategic Popoltastic brand
-If the user specifies a different brand whose charter is incomplete or missing, fall back to `companies/strategicpopoltastic/brand/charter.json` for any missing fields (colors, fonts, logo). If no company is specified at all, use the Strategic Popoltastic brand by default.
+If the user specifies a different brand whose charter is incomplete or missing, fall back to `companies/strategicpopoltastic/charter.json` for any missing fields (colors, fonts, logo). If no company is specified at all, use the Strategic Popoltastic brand by default.
 
 ## Output Location
 

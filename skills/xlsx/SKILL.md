@@ -73,13 +73,13 @@ When creating a spreadsheet for a **specific company or brand**, check for a bra
 **Financial model color conventions always override brand colors.** The blue/black/green/red text conventions in the "Color Coding Standards" section above take precedence over any charter palette.
 
 ### Discovering brand data
-**Default**: Use `companies/strategicpopoltastic/brand/charter.json` (the Strategic Popoltastic brand). Override only if the user explicitly names a different brand.
+**Default**: Use `companies/strategicpopoltastic/charter.json` (the Strategic Popoltastic brand). Override only if the user explicitly names a different brand.
 
-Look for a charter file at `companies/<name>/brand/charter.json`. If a charter exists, it provides:
+Look for a charter file at `companies/<name>/charter.json`. If a charter exists, it provides:
 
 - **Colors**: `primary`, `secondary`, `accent` — used for header row fills and chart series
 - **Fonts**: `heading` (family + weight), `body` (family + weight) — used for header and data rows
-- **Logo**: `logo.primary` — filename in the same `brand/` directory, for print headers
+- **Logo**: `logo.primary` — filename in the same company directory, for print headers
 
 ### Applying brand data
 
@@ -89,7 +89,7 @@ import json
 from pathlib import Path
 from openpyxl.styles import Font, PatternFill
 
-charter = json.loads(Path('companies/<name>/brand/charter.json').read_text())
+charter = json.loads(Path('companies/<name>/charter.json').read_text())
 primary = charter['colors']['primary'].replace('#', '')
 heading_font = charter['fonts']['heading']['family']
 body_font = charter['fonts']['body']['family']
@@ -103,7 +103,7 @@ for cell in sheet[1]:
 ```
 
 ### When using a non-Strategic Popoltastic brand
-If the user specifies a different brand whose charter is incomplete or missing, fall back to `companies/strategicpopoltastic/brand/charter.json` for any missing fields (colors, fonts, logo). If no company is specified at all, use the Strategic Popoltastic brand by default.
+If the user specifies a different brand whose charter is incomplete or missing, fall back to `companies/strategicpopoltastic/charter.json` for any missing fields (colors, fonts, logo). If no company is specified at all, use the Strategic Popoltastic brand by default.
 
 ## Template Auto-Discovery
 
@@ -111,7 +111,7 @@ When creating a branded spreadsheet, check for an existing XLSX template before 
 
 ### Resolution chain
 1. **Charter manifest**: `charter.templates.xlsx.default` → exact path from charter (relative to brand dir)
-2. **Filesystem convention**: `brand/templates/xlsx/default.xlsx` → format-organized template directory
+2. **Filesystem convention**: `templates/xlsx/default.xlsx` → format-organized template directory
 3. **No template found** → programmatic generation with openpyxl (current behavior)
 
 No brands currently have xlsx templates — this convention is documented for future use. When a template becomes available, load it with `openpyxl.load_workbook()` instead of creating a blank `Workbook()`.

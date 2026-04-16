@@ -28,12 +28,12 @@ Create animated videos using [Remotion](https://www.remotion.dev/) with optional
 ```
 DEFAULT: Use companies/strategicpopoltastic/ (the Strategic Popoltastic brand)
 OVERRIDE: Only if the user explicitly names a different brand
-READ: companies/<name>/brand/charter.json
+READ: companies/<name>/charter.json
   └── Extract colors, fonts, logo paths, video settings (resolution, fps)
   └── Extract formatting rules (accentCycleColors, autoContrastText)
 READ: companies/<name>/profile.json
   └── Extract company.name, company.tagline for title cards
-CHECK: companies/<name>/brand/images/
+CHECK: companies/<name>/images/
   └── Discover brand photography for background scenes, intro/outro cards
 FALLBACK: When using a non-Strategic Popoltastic brand, fall back to companies/strategicpopoltastic/ for missing fields
 ```
@@ -52,7 +52,7 @@ When a brand directory has an `images/` subdirectory, use brand photography for:
 - **Background scenes** — full-bleed behind text overlays
 - **Intro/outro cards** — opening and closing visual frames
 
-List available images with `ls companies/<name>/brand/images/` and choose photos that match each scene's topic.
+List available images with `ls companies/<name>/images/` and choose photos that match each scene's topic.
 
 #### Company identity
 If `profile.json` exists, use `company.name` and `company.tagline` for title cards and closing frames instead of hardcoding text.

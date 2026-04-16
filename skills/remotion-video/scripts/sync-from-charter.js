@@ -46,7 +46,7 @@ function discoverCompany() {
 }
 
 const company = discoverCompany();
-const charterPath = path.join(companiesDir, company, "brand", "charter.json");
+const charterPath = path.join(companiesDir, company, "charter.json");
 
 if (!fs.existsSync(charterPath)) {
   console.error(`Error: ${charterPath} not found`);
@@ -59,7 +59,7 @@ const videoSettings = charter.video || {};
 const resolution = (videoSettings.resolution || "1920x1080").split("x").map(Number);
 const fps = videoSettings.fps || 30;
 
-const theme = `// Auto-generated from ${company}/brand/charter.json — do not edit manually.
+const theme = `// Auto-generated from ${company}/charter.json — do not edit manually.
 // Regenerate with: node skills/remotion-video/scripts/sync-from-charter.js --company ${company}
 
 export const theme = {

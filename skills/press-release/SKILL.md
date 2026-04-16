@@ -23,7 +23,7 @@ Press releases are still valued by journalists (Cision reports 72% prefer receiv
 
 ```
 companies/<name>/profile.json        → Company name, tagline, HQ, contact, services
-companies/<name>/brand/charter.json   → Colors, fonts, logo (for branded PDF/HTML versions)
+companies/<name>/charter.json   → Colors, fonts, logo (for branded PDF/HTML versions)
 companies/<name>/press-releases/      → Press release content library:
   ├── spokespersons.json     → Approved spokespersons with titles, quote style, topics
   ├── boilerplate.json       → Company boilerplate versions (standard, short, product-specific)
@@ -273,8 +273,8 @@ This skill owns press release content — structure, editorial quality, governan
 **Default**: If the user doesn't specify a format, produce markdown first and ask whether they'd like a formatted DOCX or PDF. Press releases are most commonly distributed as PDF attachments or pasted into wire services — recommend accordingly.
 
 **Brand context to carry forward** when producing formatted output:
-- Brand charter location: `companies/<name>/brand/charter.json`
-- Apply heading color from `colors.primary`, body font from `fonts.body`, logo from `brand/logos/` (path in charter `logo` section)
+- Brand charter location: `companies/<name>/charter.json`
+- Apply heading color from `colors.primary`, body font from `fonts.body`, logo from `logos/` (path in charter `logo` section)
 - Use `document` section from charter for margins, headers, footers
 - Include company logo on the release header if available
 

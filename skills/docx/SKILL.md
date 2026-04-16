@@ -17,13 +17,13 @@ A .docx file is a ZIP archive containing XML files.
 When creating a document for a **specific company or brand**, check for a brand charter before choosing colors and fonts manually. This is optional — when no brand is specified, produce an unbranded document with default styling.
 
 ### Discovering brand data
-**Default**: Use `companies/strategicpopoltastic/brand/charter.json` (the Strategic Popoltastic brand). Override only if the user explicitly names a different brand.
+**Default**: Use `companies/strategicpopoltastic/charter.json` (the Strategic Popoltastic brand). Override only if the user explicitly names a different brand.
 
-Look for a charter file at `companies/<name>/brand/charter.json`. If a charter exists, it provides:
+Look for a charter file at `companies/<name>/charter.json`. If a charter exists, it provides:
 
 - **Colors**: `primary`, `secondary`, `accent`, `background`, `backgroundAlt`, `text`, `textLight`, plus semantic colors (`success`, `warning`, `error`)
 - **Fonts**: `heading` (family + weight + fallback), `body` (family + weight + fallback), `mono` (family + fallback)
-- **Logo**: filename(s) in the same `brand/` directory (e.g. `logo.png`, `logo_white.png`) with max dimensions and `"sizing": "contain"` — the logo must fit within the `maxWidth`/`maxHeight` bounding box while preserving its natural aspect ratio (never stretch or squash)
+- **Logo**: filename(s) in the same company directory (e.g. `logo.png`, `logo_white.png`) with max dimensions and `"sizing": "contain"` — the logo must fit within the `maxWidth`/`maxHeight` bounding box while preserving its natural aspect ratio (never stretch or squash)
 - **Document settings**: `document.margins` (top/bottom/left/right), `document.header`, `document.footer`, `document.headingColor`, `document.tableHeaderColor`
 - **Formatting rules**: `formatting.headingThreshold`, `formatting.accentCycleColors`, `formatting.autoContrastText`
 
@@ -32,7 +32,7 @@ Look for a charter file at `companies/<name>/brand/charter.json`. If a charter e
 When a charter exists, read it and map fields to docx-js parameters:
 
 ```javascript
-const charter = JSON.parse(fs.readFileSync('companies/<name>/brand/charter.json', 'utf-8'));
+const charter = JSON.parse(fs.readFileSync('companies/<name>/charter.json', 'utf-8'));
 const brandDir = path.resolve('companies/<name>/brand');
 
 // Margins → Document sections
@@ -142,7 +142,7 @@ If the charter has a `formatting` section, apply these rules:
 - **`autoContrastText`**: Rarely needed in DOCX (text and background are usually separate), but apply when placing text on colored table headers or callout boxes.
 
 ### When using a non-Strategic Popoltastic brand
-If the user specifies a different brand whose charter is incomplete or missing, fall back to `companies/strategicpopoltastic/brand/charter.json` for any missing fields (colors, fonts, logo). If no company is specified at all, use the Strategic Popoltastic brand by default.
+If the user specifies a different brand whose charter is incomplete or missing, fall back to `companies/strategicpopoltastic/charter.json` for any missing fields (colors, fonts, logo). If no company is specified at all, use the Strategic Popoltastic brand by default.
 
 ## Template Auto-Discovery
 
@@ -150,7 +150,7 @@ When creating a branded document, check for an existing DOCX template before gen
 
 ### Resolution chain
 1. **Charter manifest**: `charter.templates.docx.<variant>` → exact path from charter (relative to brand dir)
-2. **Filesystem convention**: `brand/templates/docx/default.docx` → format-organized template directory
+2. **Filesystem convention**: `templates/docx/default.docx` → format-organized template directory
 3. **No template found** → programmatic generation (docx-js workflow below)
 
 ### Discovery code pattern
@@ -177,7 +177,7 @@ if (!templatePath || !fs.existsSync(templatePath)) {
 | Brand has a template + user wants standard report | **Use template** — unpack OOXML, edit, repack |
 | Brand has a template + user wants custom layout | **Generate from scratch** — template constrains creativity |
 | No template exists | **Generate from scratch** — docx-js workflow |
-| Letterhead needed | Check `charter.templates.docx.letterhead` or `brand/templates/docx/letterhead.docx` |
+| Letterhead needed | Check `charter.templates.docx.letterhead` or `templates/docx/letterhead.docx` |
 
 When a template is found, use the OOXML editing workflow: copy template → unpack → edit XML → validate → repack.
 

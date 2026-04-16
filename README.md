@@ -57,7 +57,7 @@ Start Claude Code in any project directory and use the plugin skills:
 
 ## Company Data
 
-Brand data is in `companies/strategicpopoltastic/brand/charter.json` and includes:
+Brand data is in `companies/strategicpopoltastic/charter.json` and includes:
 - Color palette (primary, secondary, accent)
 - Typography (heading, body, monospace fonts)
 - Logo files and paths
